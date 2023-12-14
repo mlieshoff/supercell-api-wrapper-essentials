@@ -1,0 +1,1 @@
+# supercell-api-wrapper-essentials
