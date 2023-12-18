@@ -1,5 +1,4 @@
 [![](https://img.shields.io/badge/java-packagecloud.io-844fec.svg)](https://packagecloud.io/)
-[![Nightlies](https://github.com/mlieshoff/supercell-connectors/actions/workflows/nightlies.yml/badge.svg)](https://github.com/mlieshoff/supercell-connectors/actions/workflows/nightlies.yml)
 
 # supercell-api-wrapper-essentials 1.0.0
 Essentials for Java wrappers of official Supercell Clash Royal / Brawl Stars Api's
