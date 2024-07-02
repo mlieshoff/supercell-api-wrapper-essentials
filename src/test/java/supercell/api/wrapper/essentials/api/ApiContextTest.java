@@ -16,8 +16,7 @@
  */
 package supercell.api.wrapper.essentials.api;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -40,29 +39,31 @@ class ApiContextTest {
     @CsvSource(value = "null,", nullValues = "null")
     void construct_withoutUrl_shouldThrowException(String actual) {
 
-        assertThrows(
-                IllegalArgumentException.class, () -> new ApiContext(actual, API_KEY, connector));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new ApiContext(actual, API_KEY, connector));
     }
 
     @ParameterizedTest
     @CsvSource(value = "null,", nullValues = "null")
     void construct_withoutApiKey_shouldThrowException(String actual) {
 
-        assertThrows(IllegalArgumentException.class, () -> new ApiContext(URL, actual, connector));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new ApiContext(URL, actual, connector));
     }
 
     @Test
     void construct_withoutConnector_shouldThrowException() {
 
-        assertThrows(IllegalArgumentException.class, () -> new ApiContext(URL, API_KEY, null));
+        assertThatIllegalArgumentException().isThrownBy(() -> new ApiContext(URL, API_KEY, null));
     }
 
     @Test
     void construct_whenWithParameters_shouldSetValues() {
+
         ApiContext actual = new ApiContext(URL, API_KEY, connector);
 
-        assertEquals(URL, actual.url());
-        assertEquals(API_KEY, actual.apiKey());
-        assertEquals(connector, actual.connector());
+        assertThat(actual.apiKey()).isEqualTo(API_KEY);
+        assertThat(actual.connector()).isEqualTo(connector);
+        assertThat(actual.url()).isEqualTo(URL);
     }
 }

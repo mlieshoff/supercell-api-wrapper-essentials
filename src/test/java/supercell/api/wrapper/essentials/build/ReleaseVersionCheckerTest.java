@@ -1,6 +1,10 @@
 package supercell.api.wrapper.essentials.build;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+
+import static supercell.api.wrapper.essentials.TestConstants.*;
+import static supercell.api.wrapper.essentials.build.ReleaseVersionChecker.main;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,31 +13,61 @@ class ReleaseVersionCheckerTest {
     @Test
     void main_whenWithNullArray_thenThrowException() {
 
-        assertThrows(NullPointerException.class, () -> ReleaseVersionChecker.main(null));
+        assertThatIllegalStateException()
+                .isThrownBy(() -> main(null))
+                .withMessage("version filename and pom file name are required!");
     }
 
     @Test
     void main_whenWithEmptyArray_thenThrowException() {
 
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> ReleaseVersionChecker.main(new String[] {}));
+        assertThatIllegalStateException()
+                .isThrownBy(() -> main(new String[] {}))
+                .withMessage("version filename and pom file name are required!");
     }
 
     @Test
-    void main_whenWithNullParameter_thenThrowException() {
+    void main_whenWithNotEnoughParameters_thenThrowException() {
 
-        assertThrows(NullPointerException.class, () -> ReleaseVersionChecker.main(new String[] { null }));
+        assertThatIllegalStateException()
+                .isThrownBy(() -> main(new String[] {PARAMETER}))
+                .withMessage("version filename and pom file name are required!");
     }
 
     @Test
-    void main_whenWithEmptyParameter_thenThrowException() {
+    void main_whenWithVersionFileParameter_thenThrowException() {
 
-        assertThrows(IllegalStateException.class, () -> ReleaseVersionChecker.main(new String[] { "" }));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> main(new String[] {EMPTY, PARAMETER}))
+                .withMessage("versionFilename must be set! But was: ");
     }
 
     @Test
-    void main_whenWithEmptyParameter_thenThrowException2() {
+    void main_whenWithPomFileParameter_thenThrowException() {
 
-        assertThrows(IllegalStateException.class, () -> ReleaseVersionChecker.main(
-                new String[] { "./src/test/resources/version_different.txt", "./pom.xml" }));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> main(new String[] {PARAMETER, EMPTY}))
+                .withMessage("pomFilename must be set! But was: ");
+    }
+
+    @Test
+    void main_whenWithDifferentVersionInVersionFileAndPom_thenThrowException() {
+
+        assertThatIllegalStateException()
+                .isThrownBy(
+                        () ->
+                                main(
+                                        new String[] {
+                                            VERSION_DIFFERENT_THAN_TEST_POM_FILENAME,
+                                            TEST_POM_FILENAME
+                                        }))
+                .withMessage(
+                        "Version of 'VERSION.txt' (2.0) are not matching with version in 'pom.xml' (1.0.0)!");
+    }
+
+    @Test
+    void main_whenWithSameVersionInVersionFileAndPom_thenDoNotThrowException() {
+
+        main(new String[] {VERSION_100_FILENAME, TEST_POM_FILENAME});
     }
 }

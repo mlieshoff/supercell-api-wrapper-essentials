@@ -71,7 +71,7 @@ public class StandardConnector implements Connector {
                                 .send(request, HttpResponse.BodyHandlers.ofString());
                 logResponse(response);
                 if (response.statusCode() != 200) {
-                    throw new ConnectorException(String.valueOf(response.statusCode()));
+                    throw new ConnectorException(response.statusCode() + ": " + response.body());
                 }
                 json = response.body();
                 onJsonReceived(replacedUrl, json);
