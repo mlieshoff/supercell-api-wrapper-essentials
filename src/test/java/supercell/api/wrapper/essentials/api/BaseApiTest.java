@@ -16,9 +16,7 @@
  */
 package supercell.api.wrapper.essentials.api;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
@@ -57,10 +55,7 @@ class BaseApiTest {
     private static ArgumentMatcher<RequestContext> createRequestContextArgumentMatcher(
             RequestContext expected) {
         return actual -> {
-            assertNotNull(actual);
-            assertEquals(expected.apiKey(), actual.apiKey());
-            assertEquals(expected.url(), actual.url());
-            assertEquals(expected.responseClass(), actual.responseClass());
+            assertThat(actual).usingRecursiveComparison().isEqualTo(expected);
             return true;
         };
     }
@@ -75,49 +70,45 @@ class BaseApiTest {
     @Test
     void get_whenWithNullPart_shouldThrowException() {
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> unitUnderTest.get(null, request, FooResponse.class));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> unitUnderTest.get(null, request, FooResponse.class));
     }
 
     @Test
     void get_whenWithEmptyPart_shouldThrowException() {
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> unitUnderTest.get(EMPTY, request, FooResponse.class));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> unitUnderTest.get(EMPTY, request, FooResponse.class));
     }
 
     @Test
     void get_whenWithNullRequest_shouldThrowException() {
 
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> unitUnderTest.get(URL, null, FooResponse.class));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> unitUnderTest.get(URL, null, FooResponse.class));
     }
 
     @Test
     void get_whenWithNullResponseClass_shouldThrowException() {
 
-        assertThrows(IllegalArgumentException.class, () -> unitUnderTest.get(URL, request, null));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> unitUnderTest.get(URL, request, null));
     }
 
     @Test
     void get_whenWithConnectorException_shouldThrowApiException() {
         when(connector.get(any(RequestContext.class))).thenThrow(ConnectorException.class);
 
-        assertThrows(
-                ExecutionException.class,
-                () -> unitUnderTest.get(URL, request, FooResponse.class).get());
+        assertThatExceptionOfType(ExecutionException.class)
+                .isThrownBy(() -> unitUnderTest.get(URL, request, FooResponse.class).get());
     }
 
     @Test
     void get_whenWithException_shouldThrowIllegalStateException() {
         when(connector.get(any(RequestContext.class))).thenThrow(IllegalStateException.class);
 
-        assertThrows(
-                ExecutionException.class,
-                () -> unitUnderTest.get(URL, request, FooResponse.class).get());
+        assertThatExceptionOfType(ExecutionException.class)
+                .isThrownBy(() -> unitUnderTest.get(URL, request, FooResponse.class).get());
     }
 
     @Test
@@ -130,7 +121,7 @@ class BaseApiTest {
 
         FooResponse actual = unitUnderTest.get(PART, request, FooResponse.class).get();
 
-        assertEquals(expected, actual);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Getter
