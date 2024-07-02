@@ -7,7 +7,12 @@
 ### Added
 
 - Java 21 support
-- New change log & release checkers
+- new change log & release checkers
+- migrated tests to assertJ
+- added readFileToString() method to BuildUtils
+- added response body to get methods exception message in case status code was not 200
+- upgraded Google Java formatter from 1.17. to 1.22
+- upgraded Lombok from 1.18.24 to 1.18.32
 
 ## [1.0.1] - 2023-12-18
 
