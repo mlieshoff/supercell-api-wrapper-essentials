@@ -169,7 +169,7 @@
                 <artifactId>spotless-maven-plugin</artifactId>
                 <version>${version.maven.spotless}</version>
                 <configuration>
-                    <ratchetFrom>origin/master</ratchetFrom>
+                    <ratchetFrom>origin/main</ratchetFrom>
                     <java>
                         <googleJavaFormat>
                             <version>${version.google-java-formatter}</version>
