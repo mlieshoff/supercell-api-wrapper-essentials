@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>supercell-api-wrapper-essentials</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <groupId>supercell-api-wrapper-essentials</groupId>
     <url>https://maven.apache.org</url>
     <inceptionYear>2023</inceptionYear>
@@ -32,6 +32,7 @@
     </licenses>
     <properties>
         <version.assertj>3.26.0</version.assertj>
+        <version.google-java-formatter>1.25.2</version.google-java-formatter>
         <version.gson>2.9.0</version.gson>
         <version.io>2.11.0</version.io>
         <version.jacoco>0.8.10</version.jacoco>
@@ -41,6 +42,7 @@
         <version.lombok>1.18.32</version.lombok>
         <version.maven.exec>3.2.0</version.maven.exec>
         <version.maven.source>3.0.1</version.maven.source>
+        <version.maven.spotless>2.44.2</version.maven.spotless>
         <version.maven.surfire>2.22.2</version.maven.surfire>
         <version.maven.surfire.junit>1.0.3</version.maven.surfire.junit>
         <version.maven.packagecloud>0.0.4</version.maven.packagecloud>
@@ -159,6 +161,30 @@
                                 <argument>./CHANGELOG.md</argument>
                             </arguments>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${version.maven.spotless}</version>
+                <configuration>
+                    <ratchetFrom>origin/main</ratchetFrom>
+                    <java>
+                        <googleJavaFormat>
+                            <version>${version.google-java-formatter}</version>
+                            <style>AOSP</style>
+                            <reflowLongStrings>true</reflowLongStrings>
+                            <reorderImports>true</reorderImports>
+                        </googleJavaFormat>
+                    </java>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>process-resources</phase>
                     </execution>
                 </executions>
             </plugin>
