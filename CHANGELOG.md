@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [2.0.1] - 2025-02-13
+
+### Added
+
+- Maven Spotless Plugin
+
 ## [2.0.0] - 2024-06-25
 
 ### Added
@@ -26,7 +32,8 @@
 
 - release version checker
 
-[unreleased]: https://github.com/mlieshoff/supercell-connectors/compare/v2.0.0...HEAD
+[unreleased]: https://github.com/mlieshoff/supercell-connectors/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/mlieshoff/supercell-connectors/compare/v2.0.0...2.0.1
 [2.0.0]: https://github.com/mlieshoff/supercell-connectors/compare/v1.0.1...2.0.0
 [1.0.1]: https://github.com/mlieshoff/supercell-connectors/compare/v1.0.0...1.0.1
 [1.0.0]: https://github.com/mlieshoff/supercell-connectors/compare/v1.0.0...1.0.0
