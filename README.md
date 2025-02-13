@@ -1,33 +1,9 @@
 [![](https://img.shields.io/badge/java-packagecloud.io-844fec.svg)](https://packagecloud.io/)
 
-# supercell-api-wrapper-essentials 2.0.1
+# supercell-api-wrapper-essentials 3.0.0
 Essentials for Java wrappers of official Supercell Clash Royal / Brawl Stars Api's
 
-### Usage
-
-#### Release Version Checker 
-```xml
-    <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <executions>
-            <execution>
-                <id>ReleaseVersion</id>
-                <phase>prepare-package</phase>
-                <goals>
-                    <goal>java</goal>
-                </goals>
-                <configuration>
-                    <mainClass>supercell.api.wrapper.essentials.build.ReleaseVersionChecker</mainClass>
-                    <arguments>
-                        <argument>${file_with_version_as_simple_line_of_string}</argument>
-                        <argument>${maven_pom_file}</argument>
-                    </arguments>
-                </configuration>
-            </execution>
-        </executions>
-    </plugin>
-```
+## Usage
 
 ## How to bind the packagecloud repository
 
@@ -50,7 +26,7 @@ Essentials for Java wrappers of official Supercell Clash Royal / Brawl Stars Api
 
 to Gradle:
 ```groovy
-    implementation group: 'supercell-api-wrapper-essentials', name: 'supercell-api-wrapper-essentials', version: '2.0.1'
+    implementation group: 'supercell-api-wrapper-essentials', name: 'supercell-api-wrapper-essentials', version: '3.0.0'
 ```
 
 to Maven:
@@ -58,7 +34,7 @@ to Maven:
     <dependency>
         <groupId>supercell-api-wrapper-essentials</groupId>
         <artifactId>supercell-api-wrapper-essentials</artifactId>
-        <version>2.0.1</version>
+        <version>3.0.0</version>
     </dependency>
 ```
 
