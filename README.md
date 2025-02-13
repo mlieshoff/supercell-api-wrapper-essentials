@@ -1,6 +1,6 @@
 [![](https://img.shields.io/badge/java-packagecloud.io-844fec.svg)](https://packagecloud.io/)
 
-# supercell-api-wrapper-essentials 2.0.2
+# supercell-api-wrapper-essentials 3.0.0
 Essentials for Java wrappers of official Supercell Clash Royal / Brawl Stars Api's
 
 ## Usage
@@ -26,7 +26,7 @@ Essentials for Java wrappers of official Supercell Clash Royal / Brawl Stars Api
 
 to Gradle:
 ```groovy
-    implementation group: 'supercell-api-wrapper-essentials', name: 'supercell-api-wrapper-essentials', version: '2.0.2'
+    implementation group: 'supercell-api-wrapper-essentials', name: 'supercell-api-wrapper-essentials', version: '3.0.0'
 ```
 
 to Maven:
@@ -34,7 +34,7 @@ to Maven:
     <dependency>
         <groupId>supercell-api-wrapper-essentials</groupId>
         <artifactId>supercell-api-wrapper-essentials</artifactId>
-        <version>2.0.2</version>
+        <version>3.0.0</version>
     </dependency>
 ```
 
