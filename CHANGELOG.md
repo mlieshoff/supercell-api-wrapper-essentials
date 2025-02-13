@@ -2,11 +2,26 @@
 
 ## [Unreleased]
 
+## [2.0.2] - 2025-02-13
+
+### Changed
+
+- Use classes from Java Build Essentials
+
+### Removed
+
+- Classes related to checker executions
+
 ## [2.0.1] - 2025-02-13
 
 ### Added
 
 - Maven Spotless Plugin
+
+### Removed
+
+- Git Formatting hooks
+- Google Format library
 
 ## [2.0.0] - 2024-06-25
 
@@ -32,7 +47,8 @@
 
 - release version checker
 
-[unreleased]: https://github.com/mlieshoff/supercell-connectors/compare/v2.0.1...HEAD
+[unreleased]: https://github.com/mlieshoff/supercell-connectors/compare/v2.0.2...HEAD
+[2.0.2]: https://github.com/mlieshoff/supercell-connectors/compare/v2.0.1...2.0.2
 [2.0.1]: https://github.com/mlieshoff/supercell-connectors/compare/v2.0.0...2.0.1
 [2.0.0]: https://github.com/mlieshoff/supercell-connectors/compare/v1.0.1...2.0.0
 [1.0.1]: https://github.com/mlieshoff/supercell-connectors/compare/v1.0.0...1.0.1
