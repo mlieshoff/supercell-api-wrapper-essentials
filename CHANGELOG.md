@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [3.0.1] - 2025-02-14
+
+### Added
+
+- GitHub Packages pipeline
+
 ## [3.0.0] - 2025-02-13
 
 ### Changed
@@ -47,7 +53,8 @@
 
 - release version checker
 
-[unreleased]: https://github.com/mlieshoff/supercell-connectors/compare/v3.0.0...HEAD
+[unreleased]: https://github.com/mlieshoff/supercell-connectors/compare/v3.0.1...HEAD
+[3.0.1]: https://github.com/mlieshoff/supercell-connectors/compare/v3.0.0...3.0.1
 [3.0.0]: https://github.com/mlieshoff/supercell-connectors/compare/v2.0.1...3.0.0
 [2.0.1]: https://github.com/mlieshoff/supercell-connectors/compare/v2.0.0...2.0.1
 [2.0.0]: https://github.com/mlieshoff/supercell-connectors/compare/v1.0.1...2.0.0
